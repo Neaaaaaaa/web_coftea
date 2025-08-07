@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CofTea Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #6F4E37;  /* Coffee brown */
+            --light-brown: #A67C52;
+            --dark-brown: #4B3621;
+            --cream: #F5F5DC;  /* Off-white/cream */
+            --light-cream: #FFF8E7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cream);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('backg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-box {
+            background-color: rgba(255, 248, 231, 0.9);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(79, 49, 18, 0.2);
+            border: 1px solid rgba(111, 78, 55, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-brown);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-brown);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(111, 78, 55, 0.3);
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            padding: 12px 15px;
+            box-sizing: border-box;
+
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #B8A99A;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-brown);
+            color: var(--light-cream);
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 20px auto 0 auto; 
+            width: 85%;
+            display: block;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-brown);
+            transform: translateY(-2px);
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--dark-brown);
+            font-size: 14px;
+        }
+
+        .auth-link a {
+            color: var(--primary-brown);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .auth-link a:hover {
+            color: var(--dark-brown);
+        }
+
+        .auth-link a:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-brown);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+
+        .auth-link a:hover:after {
+            transform: scaleX(1);
+        }
+
+        #admin-login-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary-brown);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        #admin-login-link:hover {
+            color: var(--dark-brown);
+        }
+
+        #admin-login-link:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background-color: rgba(111, 78, 55, 0.3);
+        }
+
+        .coffee-icon {
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            color: var(--primary-brown);
+            margin-bottom: 15px;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-brown);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" id="login-form">
+            <div class="coffee-icon">☕</div>
+            <h2>Welcome Back</h2>
+            <form action="login.php" method="POST">
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+    </div>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                </div>
+<a href="main.html" class="btn btn-primary">Sign In</a>
+            </form>
+            <div class="auth-link">
+                <a href="signup.html" id="signup-link">Don't have an account? Sign Up</a>
+            </div>
+            <a href="admin_login_page.html" id="admin-login-link">Admin Login</a>
+        </div>
+    </div>
+</body>
+</html>
